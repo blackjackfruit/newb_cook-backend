@@ -1,0 +1,4 @@
+coverage/
+test/database/
+node_modules
+database/
