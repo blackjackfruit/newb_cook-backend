@@ -21,7 +21,7 @@ function register_retrieve_list_names(app) {
                 throw new BackendErrors("Could not find user_id for token " + token + " provided.", 400, BackendErrorReasons.INVALID_USER_ID)
             }
             const list_names_with_ids = backend.get_list_names_from_user_id(user_id);
-            response_handling.return_success_to_client(response, 200, {list_names: list_names_with_ids});
+            response_handling.return_success_to_client(response, 200, list_names_with_ids);
         } catch (error) {
             response_handling.return_failure_to_client(response, error);
         }

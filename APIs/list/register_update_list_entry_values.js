@@ -16,7 +16,14 @@ function register_update_list_entry_values(app) {
             const entry_is_check_marked = convert_to_type(request.query.entry_is_check_marked, CONVERT_TYPE.boolean)
 
             if (token == null || list_id == null || list_name == null || entry_id == null || entry_name == null || entry_is_check_marked == null) {
-                throw new BackendErrors("Missing required fields.", 400, null)
+                var missingFields = "Missing the following fields: "
+                missingFields += token == null ? "token " : ""
+                missingFields += list_id == null ? "list_id " : ""
+                missingFields += list_name == null ? "list_name " : ""
+                missingFields += entry_id == null ? "entry_id " : ""
+                missingFields += entry_name == null ? "entry_name " : ""
+                missingFields += entry_is_check_marked == null ? "entry_is_check_marked " : ""
+                throw new BackendErrors(missingFields, 400, null)
             }
 
             const user_id = backend.get_user_id_from_token(token)

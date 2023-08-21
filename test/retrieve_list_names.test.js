@@ -30,9 +30,8 @@ describe('POST /retrieve_list_names Happy Case', () => {
         .expect(200)
         .then((response) => {
             if (!('response' in response.body)) throw "response not in response.body"
-            if (!('list_names' in response.body.response)) throw "list_names not in response.body.response"
-            if (!Array.isArray(response.body.response.list_names)) throw "list_names is not an array"
-            if (response.body.response.list_names.length != 0) throw "list_names does not have 0 elements"
+            if (!Array.isArray(response.body.response)) throw "response is not an array"
+            if (response.body.response.length != 0) throw "response does not have 0 elements"
         })
     })
 
@@ -61,11 +60,10 @@ describe('POST /retrieve_list_names Happy Case', () => {
                 .expect(200)
                 .then((response) => {
                     if (!('response' in response.body)) throw "response not in response.body"
-                    if (!('list_names' in response.body.response)) throw "list_names not in response.body.response"
-                    if (!Array.isArray(response.body.response.list_names)) throw "list_names is not an array"
-                    if (response.body.response.list_names.length != 2) throw "list_names does not have 2 elements"
-                    if (response.body.response.list_names[0].list_name != 'test_list1') throw "list_names[0] is not test_list1"
-                    if (response.body.response.list_names[1].list_name != 'test_list2') throw "list_names[1] is not test_list2"
+                    if (!Array.isArray(response.body.response)) throw "response is not an array"
+                    if (response.body.response.length != 2) throw "list_names does not have 2 elements"
+                    if (response.body.response[0].list_name != 'test_list1') throw "list_names[0] is not test_list1"
+                    if (response.body.response[1].list_name != 'test_list2') throw "list_names[1] is not test_list2"
                 })
             })
         })
